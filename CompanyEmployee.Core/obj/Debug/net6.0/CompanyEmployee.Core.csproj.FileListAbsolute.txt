@@ -1,0 +1,12 @@
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployee.Core\bin\Debug\net6.0\CompanyEmployee.Core.deps.json
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployee.Core\bin\Debug\net6.0\CompanyEmployee.Core.dll
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployee.Core\bin\Debug\net6.0\CompanyEmployee.Core.pdb
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployee.Core\obj\Debug\net6.0\CompanyEmployee.Core.csproj.AssemblyReference.cache
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployee.Core\obj\Debug\net6.0\CompanyEmployee.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployee.Core\obj\Debug\net6.0\CompanyEmployee.Core.AssemblyInfoInputs.cache
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployee.Core\obj\Debug\net6.0\CompanyEmployee.Core.AssemblyInfo.cs
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployee.Core\obj\Debug\net6.0\CompanyEmployee.Core.csproj.CoreCompileInputs.cache
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployee.Core\obj\Debug\net6.0\CompanyEmployee.Core.dll
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployee.Core\obj\Debug\net6.0\refint\CompanyEmployee.Core.dll
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployee.Core\obj\Debug\net6.0\CompanyEmployee.Core.pdb
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployee.Core\obj\Debug\net6.0\ref\CompanyEmployee.Core.dll
