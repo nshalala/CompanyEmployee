@@ -21,4 +21,9 @@ public class Department : IEntity
     {
         return $"{Name}, Id: {DepartmentId}";
     }
+
+    public void AddEmployee(Employee employee)
+    {
+        employee.DepartmentId = DepartmentId;
+    }
 }

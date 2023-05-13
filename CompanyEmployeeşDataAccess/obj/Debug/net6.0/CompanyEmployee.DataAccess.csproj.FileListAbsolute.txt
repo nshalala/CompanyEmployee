@@ -1,0 +1,15 @@
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployeeşDataAccess\bin\Debug\net6.0\CompanyEmployee.DataAccess.deps.json
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployeeşDataAccess\bin\Debug\net6.0\CompanyEmployee.DataAccess.dll
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployeeşDataAccess\bin\Debug\net6.0\CompanyEmployee.DataAccess.pdb
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployeeşDataAccess\bin\Debug\net6.0\CompanyEmployee.Core.dll
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployeeşDataAccess\bin\Debug\net6.0\CompanyEmployee.Core.pdb
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployeeşDataAccess\obj\Debug\net6.0\CompanyEmployee.DataAccess.csproj.AssemblyReference.cache
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployeeşDataAccess\obj\Debug\net6.0\CompanyEmployee.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployeeşDataAccess\obj\Debug\net6.0\CompanyEmployee.DataAccess.AssemblyInfoInputs.cache
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployeeşDataAccess\obj\Debug\net6.0\CompanyEmployee.DataAccess.AssemblyInfo.cs
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployeeşDataAccess\obj\Debug\net6.0\CompanyEmployee.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployeeşDataAccess\obj\Debug\net6.0\CompanyEmployee.DataAccess.csproj.CopyComplete
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployeeşDataAccess\obj\Debug\net6.0\CompanyEmployee.DataAccess.dll
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployeeşDataAccess\obj\Debug\net6.0\refint\CompanyEmployee.DataAccess.dll
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployeeşDataAccess\obj\Debug\net6.0\CompanyEmployee.DataAccess.pdb
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployeeşDataAccess\obj\Debug\net6.0\ref\CompanyEmployee.DataAccess.dll

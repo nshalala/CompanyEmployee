@@ -11,4 +11,9 @@ public class Company : IEntity
     {
         Name = name;
     }
+
+    public void AddDepartment(Department department)
+    {
+        department.CompanyId = CompanyId;
+    }
 }
