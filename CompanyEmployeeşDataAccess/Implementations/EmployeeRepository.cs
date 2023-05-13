@@ -30,8 +30,18 @@ public class EmployeeRepository : IRepository<Employee>
         return DBContext.Employees.Find(emp => emp.EmployeeId == id);
     }
 
-    public List<Employee> GetByName(string name)
-    {
+    public List<Employee> GetAllByName(string name)
+    { 
         return DBContext.Employees.FindAll(emp => emp.Name == name);
+    }
+
+    public List<Employee> GetAll(int skip, int take)
+    {
+        return DBContext.Employees.GetRange(skip, take);
+    }
+
+    public List<Employee> GetBySalaryRange(int min, int max)
+    {
+        return DBContext.Employees.FindAll(emp => emp.Salary >= min && emp.Salary <= max);
     }
 }

@@ -28,9 +28,13 @@ public class CompanyRepository : IRepository<Company>
         return DBContext.Companies.Find(comp => comp.CompanyId == id);
     }
 
-    public List<Company> GetByName(string name)
+    public Company GetByName(string name)
     {
-        return DBContext.Companies.FindAll(comp => comp.Name == name);
+        return DBContext.Companies.Find(comp => comp.Name == name);
     }
- 
+
+    public List<Company> GetAll(int skip, int take)
+    {
+        return DBContext.Companies.GetRange(skip, take);
+    }
 }

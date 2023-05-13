@@ -29,8 +29,18 @@ public class DepartmentRepository : IRepository<Department>
         return DBContext.Departments.Find(dep => dep.DepartmentId == id);
     }
 
-    public List<Department> GetByName(string name)
+    public Department GetByName(string name)
     {
-        return DBContext.Departments.FindAll(dep => dep.Name == name);
+        return DBContext.Departments.Find(dep => dep.Name == name);
+    }
+
+    public List<Employee> GetAllEmployees(int depId)
+    {
+        return DBContext.Employees.FindAll(emp => emp.DepartmentId == depId);
+    }
+
+    public List<Department> GetAll(int skip, int take)
+    {
+        return DBContext.Departments.GetRange(skip, take);
     }
 }

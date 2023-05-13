@@ -1,0 +1,12 @@
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployee.Business\bin\Debug\net6.0\CompanyEmployee.Business.deps.json
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployee.Business\bin\Debug\net6.0\CompanyEmployee.Business.dll
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployee.Business\bin\Debug\net6.0\CompanyEmployee.Business.pdb
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployee.Business\obj\Debug\net6.0\CompanyEmployee.Business.csproj.AssemblyReference.cache
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployee.Business\obj\Debug\net6.0\CompanyEmployee.Business.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployee.Business\obj\Debug\net6.0\CompanyEmployee.Business.AssemblyInfoInputs.cache
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployee.Business\obj\Debug\net6.0\CompanyEmployee.Business.AssemblyInfo.cs
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployee.Business\obj\Debug\net6.0\CompanyEmployee.Business.csproj.CoreCompileInputs.cache
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployee.Business\obj\Debug\net6.0\CompanyEmployee.Business.dll
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployee.Business\obj\Debug\net6.0\refint\CompanyEmployee.Business.dll
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployee.Business\obj\Debug\net6.0\CompanyEmployee.Business.pdb
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployee.Business\obj\Debug\net6.0\ref\CompanyEmployee.Business.dll

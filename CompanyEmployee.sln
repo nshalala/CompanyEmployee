@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompanyEmployee.Core", "CompanyEmployee.Core\CompanyEmployee.Core.csproj", "{1AC6A7D5-ABD3-4782-B82D-250B120B1D16}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompanyEmployee.Core", "CompanyEmployee.Core\CompanyEmployee.Core.csproj", "{1AC6A7D5-ABD3-4782-B82D-250B120B1D16}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompanyEmployee.DataAccess", "CompanyEmployeeşDataAccess\CompanyEmployee.DataAccess.csproj", "{3A4CEA6C-622D-48E5-81E0-7A6D223740B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompanyEmployee.DataAccess", "CompanyEmployeeşDataAccess\CompanyEmployee.DataAccess.csproj", "{3A4CEA6C-622D-48E5-81E0-7A6D223740B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompanyEmployee.Business", "CompanyEmployee.Business\CompanyEmployee.Business.csproj", "{E04C8A9F-F84D-4239-B88F-3BBA3CD2B899}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{3A4CEA6C-622D-48E5-81E0-7A6D223740B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A4CEA6C-622D-48E5-81E0-7A6D223740B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A4CEA6C-622D-48E5-81E0-7A6D223740B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E04C8A9F-F84D-4239-B88F-3BBA3CD2B899}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E04C8A9F-F84D-4239-B88F-3BBA3CD2B899}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E04C8A9F-F84D-4239-B88F-3BBA3CD2B899}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E04C8A9F-F84D-4239-B88F-3BBA3CD2B899}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
