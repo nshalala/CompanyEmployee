@@ -10,3 +10,8 @@ C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployee.Business\obj\Debug\net6.0
 C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployee.Business\obj\Debug\net6.0\refint\CompanyEmployee.Business.dll
 C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployee.Business\obj\Debug\net6.0\CompanyEmployee.Business.pdb
 C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployee.Business\obj\Debug\net6.0\ref\CompanyEmployee.Business.dll
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployee.Business\bin\Debug\net6.0\CompanyEmployee.Core.dll
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployee.Business\bin\Debug\net6.0\CompanyEmployee.DataAccess.dll
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployee.Business\bin\Debug\net6.0\CompanyEmployee.DataAccess.pdb
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployee.Business\bin\Debug\net6.0\CompanyEmployee.Core.pdb
+C:\Users\nshal\Desktop\CompanyEmployee\CompanyEmployee.Business\obj\Debug\net6.0\CompanyEmployee.Business.csproj.CopyComplete

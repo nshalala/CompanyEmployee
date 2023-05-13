@@ -13,13 +13,7 @@ public class Employee : IEntity
     public string Email { get; set; }
     public string PhoneNumber { get; set; }
 
-    //private Employee()
-    //{
-    //    Id = _id;
-    //    _id++;
-    //}
-
-    public Employee(string name, string surname, int salary)/*:this()*/
+    public Employee(string name, string surname, int salary)
     {
         Name = name;
         Surname = surname;

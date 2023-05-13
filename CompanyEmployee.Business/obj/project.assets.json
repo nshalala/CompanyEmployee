@@ -1,11 +1,48 @@
 {
   "version": 3,
   "targets": {
-    "net6.0": {}
+    "net6.0": {
+      "CompanyEmployee.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/CompanyEmployee.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CompanyEmployee.Core.dll": {}
+        }
+      },
+      "CompanyEmployee.DataAccess/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "CompanyEmployee.Core": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/CompanyEmployee.DataAccess.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CompanyEmployee.DataAccess.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "CompanyEmployee.Core/1.0.0": {
+      "type": "project",
+      "path": "../CompanyEmployee.Core/CompanyEmployee.Core.csproj",
+      "msbuildProject": "../CompanyEmployee.Core/CompanyEmployee.Core.csproj"
+    },
+    "CompanyEmployee.DataAccess/1.0.0": {
+      "type": "project",
+      "path": "../CompanyEmployeeşDataAccess/CompanyEmployee.DataAccess.csproj",
+      "msbuildProject": "../CompanyEmployeeşDataAccess/CompanyEmployee.DataAccess.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net6.0": []
+    "net6.0": [
+      "CompanyEmployee.DataAccess >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\nshal\\.nuget\\packages\\": {},
@@ -39,7 +76,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\nshal\\Desktop\\CompanyEmployee\\CompanyEmployeeşDataAccess\\CompanyEmployee.DataAccess.csproj": {
+              "projectPath": "C:\\Users\\nshal\\Desktop\\CompanyEmployee\\CompanyEmployeeşDataAccess\\CompanyEmployee.DataAccess.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
