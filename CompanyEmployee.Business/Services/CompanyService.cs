@@ -1,5 +1,4 @@
 ﻿using CompanyEmployee.Business.Exceptions;
-using CompanyEmployee.Business.Exceptionsı;
 using CompanyEmployee.Business.Helpers;
 using CompanyEmployee.Business.Interfaces;
 using CompanyEmployee.Core.Entities;
@@ -10,49 +9,60 @@ namespace CompanyEmployee.Business.Services;
 
 public class CompanyService : ICompanyService
 {
-    public CompanyRepository companyRepository { get; set; }
-    public void Create(string name)
+    public CompanyRepository companyRepository { get; }
+
+    public CompanyService()
     {
+        companyRepository = new CompanyRepository();
+    }
+    public void Create(string compName)
+    {
+        string name = compName.Trim();
+        if (string.IsNullOrEmpty(name))
+        {
+            throw new SizeException(Helper.Exceptions["SizeException"]);
+        }
         var exists = DBContext.Companies.Find(comp => comp.Name.Equals(name));
         if(exists != null)
         {
             throw new AlreadyExistsException(Helper.Exceptions["AlreadyExistsException"]);
         }
-        string compName = name.Trim();
-        if(!compName.IsOnlyLetters())
+        if(!name.IsOnlyLetters())
         {
             throw new InvalidWordException(Helper.Exceptions["InvalidWordException"]);
         }
-        Company company = new Company(compName);
+        Company company = new Company(name);
         companyRepository.Add(company);
     }
 
     public void Delete(string compName)
     {
-        var company = companyRepository.GetByName(compName);
+        string name = compName.Trim();
+        var company = companyRepository.GetByName(name);
         if (company == null)
         {
-            throw new NotFoundException($"{compName} - doesn't exist.");
+            throw new NotFoundException($"{name} - doesn't exist.");
         }
         var departments = companyRepository.GetAllDepartments(company.CompanyId);
         if(departments.Count != 0)
         {
             throw new NotEmptyException(Helper.Exceptions["NotEmptyException"]);
         }
-        companyRepository.Delete(company.CompanyId);
+        companyRepository.Delete(company);
     }
-    public void Update(Company entity)
+    public void Update(int compId, string compName)
     {
-        var exists = companyRepository.GetByName(entity.Name);
-        if (exists != null)
+        string name = compName.Trim();
+        if (!string.IsNullOrEmpty(name))
         {
-            throw new NotFoundException($"{entity.Name} - doesn't exist.");
+            throw new SizeException(Helper.Exceptions["SizeException"]);
         }
-        if (!string.IsNullOrEmpty(entity.Name))
+        var company = companyRepository.GetById(compId);
+        if (company == null)
         {
-            throw new ArgumentNullException("Company name cannot be null.");
+            throw new NotFoundException($"{name} - doesn't exist.");
         }
-        companyRepository.Update(entity);
+        companyRepository.Update(company);
     }
 
     public List<Department> GetAllDepartments(int compId)
@@ -74,4 +84,13 @@ public class CompanyService : ICompanyService
         return companyRepository.GetAll(skip, take);
     }
 
+    public List<Company> GetAllByName(string compName)
+    {
+        var name = compName.Trim();
+        if (string.IsNullOrEmpty(name))
+        {
+            throw new SizeException(Helper.Exceptions["SizeException"]);
+        }
+        return companyRepository.GetAllByName(name);
+    }
 }

@@ -1,10 +1,9 @@
-﻿namespace CompanyEmployee.Business.Exceptionsı
+﻿namespace CompanyEmployee.Business.Exceptions;
+
+public class AlreadyExistsException:Exception
 {
-    public class AlreadyExistsException:Exception
+    public AlreadyExistsException(string message):base(message)
     {
-        public AlreadyExistsException(string message):base(message)
-        {
-            
-        }
+        
     }
 }

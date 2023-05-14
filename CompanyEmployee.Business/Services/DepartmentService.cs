@@ -1,24 +1,29 @@
 ﻿using CompanyEmployee.Business.Exceptions;
-using CompanyEmployee.Business.Exceptionsı;
 using CompanyEmployee.Business.Helpers;
 using CompanyEmployee.Business.Interfaces;
 using CompanyEmployee.Core.Entities;
-using CompanyEmployee.DataAccess.Contexts;
 using CompanyEmployee.DataAccess.Implementations;
 
 namespace CompanyEmployee.Business.Services;
 
 public class DepartmentService : IDepartmentService
 {
-    public DepartmentRepository departmentRepository { get; set; }
-    public CompanyRepository companyRepository { get; set; }
+    public DepartmentRepository departmentRepository { get; }
+    public CompanyRepository companyRepository { get; }
 
-    public void Create(string name, int employeeLimit, int companyId)
+    public DepartmentService()
     {
+        departmentRepository = new DepartmentRepository();
+        companyRepository = new CompanyRepository();
+    }
+
+    public void Create(string depName, int employeeLimit, int companyId)
+    {
+        string name = depName.Trim();
         var compExists = companyRepository.GetById(companyId);
         if (compExists == null)
         {
-            throw new NotFoundException(Helper.Exceptions["NotFoundException"]);
+            throw new NotFoundException($"{compExists.Name} - doesn't exist.");
         }
         var depExists = companyRepository.GetAllDepartments(companyId).Find(dep => dep.Name == name);
         if (depExists != null)
@@ -35,31 +40,54 @@ public class DepartmentService : IDepartmentService
 
     public void Delete(int departmentId)
     {
-        var depExists = departmentRepository.GetById(departmentId);
-        if(depExists == null)
+        var department = departmentRepository.GetById(departmentId);
+        if (department == null)
         {
-            throw new NotFoundException(Helper.Exceptions["NotFoundException"]);
+            throw new NotFoundException($"{department.Name} - doesn't exist.");
         }
         var containsEmp = departmentRepository.GetAllEmployees(departmentId);
-        if(containsEmp.Count != 0)
+        if (containsEmp.Count != 0)
         {
             throw new NotEmptyException(Helper.Exceptions["NotEmptyException"]);
         }
-        departmentRepository.Delete(departmentId);
+        departmentRepository.Delete(department);
     }
 
-    public void Update(Department department)
+    public void Update(int depId, string depName, int empLimit)
     {
-        var depExists = departmentRepository.GetById(department.DepartmentId);
-        if( depExists == null)
+        string name = depName.Trim();
+        if (string.IsNullOrEmpty(name))
         {
-            throw new NotFoundException(Helper.Exceptions["NotFoundException"]);
+            throw new SizeException(Helper.Exceptions["SizeException"]);
         }
-        int empCount = departmentRepository.GetAllEmployees(department.DepartmentId).Count;
-        if(department.EmployeeLimit < empCount)
+        var department = departmentRepository.GetById(depId);
+        if (department == null)
+        {
+            throw new NotFoundException("Corresponding department doesn't exist.");
+        }
+        int empCount = departmentRepository.GetAllEmployees(depId).Count;
+        if (empLimit < empCount)
         {
             throw new TooLowException(Helper.Exceptions["TooLowException"]);
         }
-        departmentRepository.Update(department);
+        departmentRepository.Update(depId, name, empLimit);
+    }
+
+    public List<Department> GetAll(int skip, int take)
+    {
+        if (skip < 0 || take < 0 || skip >= take)
+        {
+            throw new ArgumentOutOfRangeException("Entered values should not exceed the total amount and should be non-negative.");
+        }
+        return departmentRepository.GetAll(skip, take);
+    }
+    public List<Department> GetAllByName(string depName)
+    {
+        var name = depName.Trim();
+        if (string.IsNullOrEmpty(name))
+        {
+            throw new SizeException(Helper.Exceptions["SizeException"]);
+        }
+        return departmentRepository.GetAllByName(name);
     }
 }

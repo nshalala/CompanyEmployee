@@ -11,17 +11,17 @@ public class DepartmentRepository : IRepository<Department>
         DBContext.Departments.Add(entity);
     }
 
-    public void Delete(int id)
+    public void Delete(Department entity)
     {
-        var department = DBContext.Departments.Find(dep => dep.DepartmentId == id);
+        var department = DBContext.Departments.Find(dep => dep.DepartmentId == entity.DepartmentId);
         DBContext.Departments.Remove(department);
     }
 
-    public void Update(Department entity)
+    public void Update(int departmentId, string name, int employeeLimit)
     {
-        var department = DBContext.Departments.Find(dep => dep.DepartmentId == entity.DepartmentId);
-        department.Name = entity.Name;
-        department.EmployeeLimit = entity.EmployeeLimit;
+        var department = DBContext.Departments.Find(dep => dep.DepartmentId == departmentId);
+        department.Name = name;
+        department.EmployeeLimit = employeeLimit;
     }
 
     public Department GetById(int id)
@@ -42,5 +42,10 @@ public class DepartmentRepository : IRepository<Department>
     public List<Department> GetAll(int skip, int take)
     {
         return DBContext.Departments.GetRange(skip, take);
+    }
+
+    public List<Department> GetAllByName(string name)
+    {
+        return DBContext.Departments.FindAll(dep => dep.Name.Equals(name));
     }
 }

@@ -10,8 +10,8 @@ public class Employee : IEntity
     public string Surname { get; set; }
     public double Salary { get; set; }
     public int DepartmentId { get; set; }
-    public string Email { get; set; }
-    public string PhoneNumber { get; set; }
+    //public string Email { get; set; }
+    //public string PhoneNumber { get; set; }
 
     public Employee(string name, string surname, int salary)
     {

@@ -13,6 +13,8 @@ public class Helper
         {"AlreadyExistsException","This object already exists." },
         {"InvalidWordException","Entered word is not valid. Use only letters." },
         {"NotEmptyException","Object should be empty." },
-        {"TooLowException","Entered value is too low." }
+        {"TooLowException","Entered value is too low." },
+        {"SizeException","Length is too short." },
+        {"NegativeValueException","Enter a non-negative value." }
     };
 }

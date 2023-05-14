@@ -11,18 +11,18 @@ public class EmployeeRepository : IRepository<Employee>
         DBContext.Employees.Add(entity);
     }
 
-    public void Delete(int id)
+    public void Delete(Employee entity)
     {
-        var employee = DBContext.Employees.Find(emp => emp.EmployeeId == id);
+        var employee = DBContext.Employees.Find(emp => emp.EmployeeId == entity.EmployeeId);
         DBContext.Employees.Remove(employee);
     }
 
-    public void Update(Employee entity)
+    public void Update(int employeeId, string name, string surname, int salary)
     {
-        var employee =  DBContext.Employees.Find(emp => emp.EmployeeId == entity.EmployeeId);
-        employee.Salary = entity.Salary;
-        employee.Name = entity.Name;
-        employee.Surname = entity.Surname;
+        var employee =  DBContext.Employees.Find(emp => emp.EmployeeId == employeeId);
+        employee.Name = name;
+        employee.Surname = surname;
+        employee.Salary = salary;
     }
 
     public Employee GetById(int id)
