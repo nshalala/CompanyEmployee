@@ -33,10 +33,9 @@ public class CompanyRepository : IRepository<Company>
         return DBContext.Companies.Find(comp => comp.Name == name);
     }
 
-    public List<Department> GetAllDepartments(string compName)
+    public List<Department> GetAllDepartments(int companyId)
     {
-        var company = DBContext.Companies.Find(comp => comp.Name.Equals(compName));
-        return DBContext.Departments.FindAll(dep => dep.CompanyId == company.CompanyId);
+        return DBContext.Departments.FindAll(dep => dep.CompanyId == companyId);
     }
 
     public List<Company> GetAll(int skip, int take)

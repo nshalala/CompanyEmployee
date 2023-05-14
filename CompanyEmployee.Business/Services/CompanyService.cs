@@ -34,10 +34,10 @@ public class CompanyService : ICompanyService
         {
             throw new NotFoundException($"{compName} - doesn't exist.");
         }
-        var departments = companyRepository.GetAllDepartments(compName);
+        var departments = companyRepository.GetAllDepartments(company.CompanyId);
         if(departments.Count != 0)
         {
-            throw new InvalidOperationException("You cannot delete a company containing departments.");
+            throw new NotEmptyException(Helper.Exceptions["NotEmptyException"]);
         }
         companyRepository.Delete(company.CompanyId);
     }
@@ -50,19 +50,19 @@ public class CompanyService : ICompanyService
         }
         if (!string.IsNullOrEmpty(entity.Name))
         {
-            throw new ArgumentNullException("Company name should contain at least one character.");
+            throw new ArgumentNullException("Company name cannot be null.");
         }
         companyRepository.Update(entity);
     }
 
-    public List<Department> GetAllDepartments(string compName)
+    public List<Department> GetAllDepartments(int compId)
     {
-        var exists = companyRepository.GetByName(compName);
-        if (exists == null)
+        var company = companyRepository.GetById(compId);
+        if (company == null)
         {
-            throw new NotFoundException($"{compName} - doesn't exist.");
+            throw new NotFoundException($"{company.Name} - doesn't exist.");
         }
-        return companyRepository.GetAllDepartments(compName);
+        return companyRepository.GetAllDepartments(compId);
     }
 
     public List<Company> GetAll(int skip, int take)

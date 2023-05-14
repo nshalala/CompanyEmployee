@@ -9,10 +9,11 @@ public class Department : IEntity
     public string Name { get; set; }
     public int EmployeeLimit { get; set; }
     public int CompanyId { get; set; }
-    public Department(string name, int limit)
+    public Department(string name, int limit, int companyId)
     {
         Name = name;
         EmployeeLimit = limit;
+        CompanyId = companyId;
         DepartmentId = _id;
         _id++;
     }

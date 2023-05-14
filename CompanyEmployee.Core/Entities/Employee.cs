@@ -8,7 +8,7 @@ public class Employee : IEntity
     public int EmployeeId { get; }
     public string Name { get; set; }
     public string Surname { get; set; }
-    public int Salary { get; set; }
+    public double Salary { get; set; }
     public int DepartmentId { get; set; }
     public string Email { get; set; }
     public string PhoneNumber { get; set; }
