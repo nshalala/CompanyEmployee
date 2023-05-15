@@ -2,6 +2,7 @@
 using CompanyEmployee.Business.Helpers;
 using CompanyEmployee.Business.Interfaces;
 using CompanyEmployee.Core.Entities;
+using CompanyEmployee.DataAccess.Contexts;
 using CompanyEmployee.DataAccess.Implementations;
 
 namespace CompanyEmployee.Business.Services;
@@ -13,7 +14,7 @@ public class EmployeeService : IEmployeeService
     {
         employeeRepository = new();
     }
-    public void Create(string empName, string empSurname, int salary)
+    public void Create(string empName, string empSurname, double salary)
     {
         var name = empName.Trim();
         if (string.IsNullOrWhiteSpace(name))
@@ -50,26 +51,27 @@ public class EmployeeService : IEmployeeService
         employeeRepository.Delete(employee);
     }
 
-    public void GetAll(int skip, int take)
+    public List<Employee> GetAll(int skip, int take)
     {
-        if (skip < 0 || take < 0 || skip >= take)
+        int maxValue = DBContext.Employees.Count;
+        if (skip < 0 || take < 0 || skip+take >= maxValue)
         {
             throw new ArgumentOutOfRangeException("Entered values should not exceed the total amount and should be non-negative.");
         }
-        employeeRepository.GetAll(skip, take);
+        return employeeRepository.GetAll(skip, take);
     }
 
-    public void GetAllByName(string empName)
+    public List<Employee> GetAllByName(string empName)
     {
         var name = empName.Trim();
         if (string.IsNullOrEmpty(name))
         {
             throw new SizeException(Helper.Exceptions["SizeException"]);
         }
-        employeeRepository.GetAllByName(name);
+        return employeeRepository.GetAllByName(name);
     }
 
-    public void GetBySalaryRange(int min, int max)
+    public List<Employee> GetBySalaryRange(int min, int max)
     {
         if (min <= 0 || max <= 0)
         {
@@ -79,10 +81,10 @@ public class EmployeeService : IEmployeeService
         {
             throw new ArgumentException("Max value should be bigger than min value.");
         }
-        employeeRepository.GetBySalaryRange(min, max);
+        return employeeRepository.GetBySalaryRange(min, max);
     }
 
-    public void Update(int employeeId, string empName, string empSurname, int salary)
+    public void Update(int employeeId, string empName, string empSurname, double salary)
     {
         var oldData = employeeRepository.GetById(employeeId);
         if (oldData == null)

@@ -24,7 +24,7 @@ public class CompanyService : ICompanyService
             throw new NullReferenceException("Company name cannot be empty or white space.");
         }
         bool exists = DBContext.Companies.Any(comp => comp.Name.Equals(name));
-        if(exists)
+        if (exists)
         {
             throw new AlreadyExistsException(Helper.Exceptions["AlreadyExistsException"]);
         }
@@ -41,7 +41,7 @@ public class CompanyService : ICompanyService
             throw new NotFoundException($"{name} - doesn't exist.");
         }
         int count = companyRepository.GetAllDepartments(company.CompanyId).Count;
-        if(count != 0)
+        if (count != 0)
         {
             throw new NotEmptyException(Helper.Exceptions["NotEmptyException"]);
         }
@@ -75,7 +75,8 @@ public class CompanyService : ICompanyService
 
     public List<Company> GetAll(int skip, int take)
     {
-        if(skip < 0 || take < 0)
+        int maxValue = DBContext.Companies.Count;
+        if (skip < 0 || take < 0 || skip + take > maxValue)
         {
             throw new ArgumentOutOfRangeException("Entered values should not exceed the total amount and should be non-negative.");
         }

@@ -1,0 +1,62 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "CompanyEmployee.UI/1.0.0": {
+        "dependencies": {
+          "CompanyEmployee.Business": "1.0.0"
+        },
+        "runtime": {
+          "CompanyEmployee.UI.dll": {}
+        }
+      },
+      "CompanyEmployee.Business/1.0.0": {
+        "dependencies": {
+          "CompanyEmployee.DataAccess": "1.0.0"
+        },
+        "runtime": {
+          "CompanyEmployee.Business.dll": {}
+        }
+      },
+      "CompanyEmployee.Core/1.0.0": {
+        "runtime": {
+          "CompanyEmployee.Core.dll": {}
+        }
+      },
+      "CompanyEmployee.DataAccess/1.0.0": {
+        "dependencies": {
+          "CompanyEmployee.Core": "1.0.0"
+        },
+        "runtime": {
+          "CompanyEmployee.DataAccess.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CompanyEmployee.UI/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CompanyEmployee.Business/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CompanyEmployee.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CompanyEmployee.DataAccess/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

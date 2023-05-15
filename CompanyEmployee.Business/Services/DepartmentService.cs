@@ -31,7 +31,7 @@ public class DepartmentService : IDepartmentService
         {
             throw new AlreadyExistsException(Helper.Exceptions["AlreadyExistsException"]);
         }
-        if (compId < 1)
+        if (empLimit < 1)
         {
             throw new TooLowException(Helper.Exceptions["TooLowException"]);
         }
@@ -77,7 +77,8 @@ public class DepartmentService : IDepartmentService
 
     public List<Department> GetAll(int skip, int take)
     {
-        if (skip < 0 || take < 0 || skip >= take)
+        int maxvalue = DBContext.Departments.Count;
+        if (skip < 0 || take < 0 || skip + take > maxvalue)
         {
             throw new ArgumentOutOfRangeException("Entered values should not exceed the total amount and should be non-negative.");
         }
