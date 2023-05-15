@@ -4,6 +4,7 @@ using CompanyEmployee.Business.Interfaces;
 using CompanyEmployee.Core.Entities;
 using CompanyEmployee.DataAccess.Contexts;
 using CompanyEmployee.DataAccess.Implementations;
+using System.Xml.Linq;
 
 namespace CompanyEmployee.Business.Services;
 
@@ -17,19 +18,15 @@ public class CompanyService : ICompanyService
     }
     public void Create(string compName)
     {
-        string name = compName.Trim();
-        if (string.IsNullOrEmpty(name))
+        string name = compName.Trim().ToLower();
+        if (string.IsNullOrWhiteSpace(name))
         {
-            throw new SizeException(Helper.Exceptions["SizeException"]);
+            throw new NullReferenceException("Company name cannot be empty or white space.");
         }
-        var exists = DBContext.Companies.Find(comp => comp.Name.Equals(name));
-        if(exists != null)
+        bool exists = DBContext.Companies.Any(comp => comp.Name.Equals(name));
+        if(exists)
         {
             throw new AlreadyExistsException(Helper.Exceptions["AlreadyExistsException"]);
-        }
-        if(!name.IsOnlyLetters())
-        {
-            throw new InvalidWordException(Helper.Exceptions["InvalidWordException"]);
         }
         Company company = new Company(name);
         companyRepository.Add(company);
@@ -37,14 +34,14 @@ public class CompanyService : ICompanyService
 
     public void Delete(string compName)
     {
-        string name = compName.Trim();
+        string name = compName.Trim().ToLower();
         var company = companyRepository.GetByName(name);
         if (company == null)
         {
             throw new NotFoundException($"{name} - doesn't exist.");
         }
-        var departments = companyRepository.GetAllDepartments(company.CompanyId);
-        if(departments.Count != 0)
+        int count = companyRepository.GetAllDepartments(company.CompanyId).Count;
+        if(count != 0)
         {
             throw new NotEmptyException(Helper.Exceptions["NotEmptyException"]);
         }
@@ -52,32 +49,33 @@ public class CompanyService : ICompanyService
     }
     public void Update(int compId, string compName)
     {
-        string name = compName.Trim();
-        if (!string.IsNullOrEmpty(name))
+        string name = compName.Trim().ToLower();
+        if (string.IsNullOrWhiteSpace(name))
         {
-            throw new SizeException(Helper.Exceptions["SizeException"]);
+            throw new NullReferenceException("Company name cannot be empty or white space.");
         }
-        var company = companyRepository.GetById(compId);
-        if (company == null)
+        var compCheck = companyRepository.GetById(compId);
+        if (compCheck == null)
         {
-            throw new NotFoundException($"{name} - doesn't exist.");
+            throw new NotFoundException($"Such company doesn't exist.");
         }
-        companyRepository.Update(company);
+        Company company = new Company(name);
+        companyRepository.Update(compId, company);
     }
 
     public List<Department> GetAllDepartments(int compId)
     {
-        var company = companyRepository.GetById(compId);
-        if (company == null)
+        bool exists = DBContext.Companies.Any(comp => comp.CompanyId == compId);
+        if (!exists)
         {
-            throw new NotFoundException($"{company.Name} - doesn't exist.");
+            throw new NotFoundException("Such company doesn't exist.");
         }
         return companyRepository.GetAllDepartments(compId);
     }
 
     public List<Company> GetAll(int skip, int take)
     {
-        if(skip < 0 || take < 0 || skip >= take)
+        if(skip < 0 || take < 0)
         {
             throw new ArgumentOutOfRangeException("Entered values should not exceed the total amount and should be non-negative.");
         }
@@ -86,10 +84,10 @@ public class CompanyService : ICompanyService
 
     public List<Company> GetAllByName(string compName)
     {
-        var name = compName.Trim();
-        if (string.IsNullOrEmpty(name))
+        var name = compName.Trim().ToLower();
+        if (string.IsNullOrWhiteSpace(name))
         {
-            throw new SizeException(Helper.Exceptions["SizeException"]);
+            throw new NullReferenceException("Company name cannot be empty or white space.");
         }
         return companyRepository.GetAllByName(name);
     }

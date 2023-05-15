@@ -17,12 +17,12 @@ public class EmployeeRepository : IRepository<Employee>
         DBContext.Employees.Remove(employee);
     }
 
-    public void Update(int employeeId, string name, string surname, int salary)
+    public void Update(int id, Employee entity)
     {
-        var employee =  DBContext.Employees.Find(emp => emp.EmployeeId == employeeId);
-        employee.Name = name;
-        employee.Surname = surname;
-        employee.Salary = salary;
+        var employee =  DBContext.Employees.Find(emp => emp.EmployeeId == id);
+        employee.Name = entity.Name;
+        employee.Surname = entity.Surname;
+        employee.Salary = entity.Salary;
     }
 
     public Employee GetById(int id)
@@ -32,7 +32,7 @@ public class EmployeeRepository : IRepository<Employee>
 
     public List<Employee> GetAllByName(string name)
     { 
-        return DBContext.Employees.FindAll(emp => emp.Name == name);
+        return DBContext.Employees.FindAll(emp => emp.Name.Equals(name));
     }
 
     public List<Employee> GetAll(int skip, int take)

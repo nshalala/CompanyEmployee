@@ -89,16 +89,16 @@ public class EmployeeService : IEmployeeService
         {
             throw new NotFoundException("Employee not found.");
         }
-        var name = empName.Trim();
+        var name = empName.Trim().ToLower();
         if (string.IsNullOrWhiteSpace(name))
         {
-            throw new SizeException(Helper.Exceptions["SizeException"]);
+            throw new NullReferenceException("Employee name cannot be empty or white space.");
         }
         if (!name.IsOnlyLetters())
         {
             throw new InvalidWordException(Helper.Exceptions["InvalidWordException"]);
         }
-        var surname = empSurname.Trim();
+        var surname = empSurname.Trim().ToLower();
         if (!string.IsNullOrWhiteSpace(surname))
         {
             if (!surname.IsOnlyLetters())
@@ -110,6 +110,7 @@ public class EmployeeService : IEmployeeService
         {
             throw new TooLowException(Helper.Exceptions["TooLowException"]);
         }
-        employeeRepository.Update(employeeId, name, surname, salary);
+        Employee employee = new Employee(name, surname, salary);
+        employeeRepository.Update(employeeId, employee);
     }
 }

@@ -17,9 +17,9 @@ public class CompanyRepository : IRepository<Company>
         DBContext.Companies.Remove(company);
     }
 
-    public void Update(Company entity)
+    public void Update(int id, Company entity)
     {
-        var company = DBContext.Companies.Find(comp => comp.CompanyId == entity.CompanyId);
+        var company = DBContext.Companies.Find(comp => comp.CompanyId == id);
         company.Name = entity.Name;
     }
 
@@ -30,12 +30,12 @@ public class CompanyRepository : IRepository<Company>
 
     public Company GetByName(string name)
     {
-        return DBContext.Companies.Find(comp => comp.Name == name);
+        return DBContext.Companies.Find(comp => comp.Name.Equals(name));
     }
 
-    public List<Department> GetAllDepartments(int companyId)
+    public List<Department> GetAllDepartments(int id)
     {
-        return DBContext.Departments.FindAll(dep => dep.CompanyId == companyId);
+        return DBContext.Departments.FindAll(dep => dep.CompanyId == id);
     }
 
     public List<Company> GetAll(int skip, int take)

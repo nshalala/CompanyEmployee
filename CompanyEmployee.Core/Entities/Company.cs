@@ -10,6 +10,8 @@ public class Company : IEntity
     public Company(string name)
     {
         Name = name;
+        CompanyId = _id;
+        _id++;
     }
 
     public void AddDepartment(Department department)

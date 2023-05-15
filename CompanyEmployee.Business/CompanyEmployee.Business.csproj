@@ -10,4 +10,8 @@
     <ProjectReference Include="..\CompanyEmployeeşDataAccess\CompanyEmployee.DataAccess.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DTOs\" />
+  </ItemGroup>
+
 </Project>

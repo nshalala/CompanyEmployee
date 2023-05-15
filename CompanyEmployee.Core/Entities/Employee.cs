@@ -13,7 +13,7 @@ public class Employee : IEntity
     //public string Email { get; set; }
     //public string PhoneNumber { get; set; }
 
-    public Employee(string name, string surname, int salary)
+    public Employee(string name, string surname, double salary)
     {
         Name = name;
         Surname = surname;
