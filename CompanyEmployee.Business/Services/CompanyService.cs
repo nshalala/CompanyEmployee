@@ -62,7 +62,6 @@ public class CompanyService : ICompanyService
         Company company = new Company(name);
         companyRepository.Update(compId, company);
     }
-
     public List<Department> GetAllDepartments(int compId)
     {
         bool exists = DBContext.Companies.Any(comp => comp.CompanyId == compId);
@@ -91,5 +90,15 @@ public class CompanyService : ICompanyService
             throw new NullReferenceException("Company name cannot be empty or white space.");
         }
         return companyRepository.GetAllByName(name);
+    }
+
+    public Company GetById(int companyId)
+    {
+        var comp = companyRepository.GetById(companyId); 
+        if(comp == null)
+        {
+            throw new NotFoundException("Company not found");
+        }
+        return comp;
     }
 }

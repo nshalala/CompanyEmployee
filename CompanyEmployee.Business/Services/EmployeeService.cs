@@ -39,6 +39,7 @@ public class EmployeeService : IEmployeeService
             throw new TooLowException(Helper.Exceptions["TooLowException"]);
         }
         Employee employee = new Employee(name, surname, salary);
+        employee.StartDate = DateTime.Now;
         employeeRepository.Add(employee);
     }
 
@@ -140,5 +141,12 @@ public class EmployeeService : IEmployeeService
             throw new NotFoundException("Department not found.");
         }
         emp.DepartmentId = newDepId;
+    }
+
+    public int WorkingExperience(DateTime startDate)
+    {
+        DateTime currentDate = DateTime.Now;
+        int monthsPassed = ((currentDate.Year - startDate.Year) * 12) + currentDate.Month - startDate.Month;
+        return monthsPassed;
     }
 }

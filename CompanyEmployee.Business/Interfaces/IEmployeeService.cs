@@ -12,5 +12,5 @@ public interface IEmployeeService
     List<Employee> GetAll(int skip, int take);
     List<Employee> GetBySalaryRange(int min, int max);
     void Transfer(int empId, int newDepId);
-
+    int WorkingExperience(DateTime startDate);
 }

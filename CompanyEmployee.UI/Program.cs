@@ -200,7 +200,8 @@ void EmployeeMenu()
                     + "\n5. Get a list of employees by salary range"
                     + "\n6. Get a list of employees"
                     + "\n7. Transfer employee"
-                    + "\n8. Return to the main menu");
+                    + "\n8. Get working experience of an employee"
+                    + "\n9. Return to the main menu");
     int choice;
     bool check = int.TryParse(Console.ReadLine(), out choice);
     if (!check)
@@ -284,6 +285,13 @@ void EmployeeMenu()
             employeeService.Transfer(empId, depId);
             break;
         case 8:
+            //Get working experience
+            Console.WriteLine("Enter employee id:  ");
+            empId = int.Parse(Console.ReadLine());
+            Employee emp = employeeService.GetById(empId);
+            employeeService.WorkingExperience(emp.StartDate);
+            break;
+        case 9:
             return;
         default:
             Console.WriteLine("Such option doesn't exist. Choose another one:");
