@@ -10,6 +10,7 @@ namespace CompanyEmployee.Business.Services;
 public class EmployeeService : IEmployeeService
 {
     public EmployeeRepository employeeRepository { get; }
+    public DepartmentRepository departmentRepository { get; }
     public EmployeeService()
     {
         employeeRepository = new();
@@ -124,5 +125,20 @@ public class EmployeeService : IEmployeeService
             throw new NotFoundException("Employee not found.");
         }
         return emp;
+    }
+
+    public void Transfer(int empId,  int newDepId)
+    {
+        var emp = employeeRepository.GetById(empId); 
+        if (emp == null)
+        {
+            throw new NotFoundException("Employee not found.");
+        }
+        var dep = departmentRepository.GetById(newDepId); 
+        if (dep == null)
+        {
+            throw new NotFoundException("Department not found.");
+        }
+        emp.DepartmentId = newDepId;
     }
 }

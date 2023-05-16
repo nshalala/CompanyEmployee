@@ -11,5 +11,6 @@ public interface IEmployeeService
     List<Employee> GetAllByName(string name);
     List<Employee> GetAll(int skip, int take);
     List<Employee> GetBySalaryRange(int min, int max);
+    void Transfer(int empId, int newDepId);
 
 }

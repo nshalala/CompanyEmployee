@@ -199,7 +199,8 @@ void EmployeeMenu()
                     + "\n4. Get a list of employees by name"
                     + "\n5. Get a list of employees by salary range"
                     + "\n6. Get a list of employees"
-                    + "\n7. Return to the main menu");
+                    + "\n7. Transfer employee"
+                    + "\n8. Return to the main menu");
     int choice;
     bool check = int.TryParse(Console.ReadLine(), out choice);
     if (!check)
@@ -209,6 +210,7 @@ void EmployeeMenu()
     string name;
     string surname;
     int empId;
+    int depId;
     double salary;
     switch (choice)
     {
@@ -251,17 +253,37 @@ void EmployeeMenu()
             break;
         case 5:
             // Get employees by salary range
-            Console.Write("Enter the corresponding values:\nStart from: ");
-            int skip = int.Parse(Console.ReadLine());
-            Console.Write("Take: ");
-            int take = int.Parse(Console.ReadLine());
-            var list = employeeService.GetAll(skip, take);
+            Console.Write("Enter the corresponding values:\nMin: ");
+            int min = int.Parse(Console.ReadLine());
+            Console.Write("Max: ");
+            int max = int.Parse(Console.ReadLine());
+            var list = employeeService.GetBySalaryRange(min, max);
             foreach (var item in list)
             {
                 Console.WriteLine(item.Name);
             }
             break;
         case 6:
+            //get all emp
+            Console.Write("Enter the corresponding values:\nStart from: ");
+            int skip = int.Parse(Console.ReadLine());
+            Console.Write("Take: ");
+            int take = int.Parse(Console.ReadLine());
+            var list1 = employeeService.GetAll(skip, take);
+            foreach (var item in list1)
+            {
+                Console.WriteLine(item.Name);
+            }
+            break;
+        case 7:
+            //Transfer employee
+            Console.WriteLine("Enter employee id:  ");
+            empId = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter department id:  ");
+            depId = int.Parse(Console.ReadLine());
+            employeeService.Transfer(empId, depId);
+            break;
+        case 8:
             return;
         default:
             Console.WriteLine("Such option doesn't exist. Choose another one:");

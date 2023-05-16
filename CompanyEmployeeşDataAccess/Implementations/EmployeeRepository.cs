@@ -44,4 +44,5 @@ public class EmployeeRepository : IRepository<Employee>
     {
         return DBContext.Employees.FindAll(emp => emp.Salary >= min && emp.Salary <= max);
     }
+
 }
