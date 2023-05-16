@@ -4,10 +4,12 @@ namespace CompanyEmployee.Business.Interfaces;
 
 public interface IDepartmentService
 {
-    public void Create(string name, int employeeLimit, int companyId);
-    public void Delete(int departmentId);
-    public void Update(int departmentId, string departmentName, int employeeLimit);
-    public List<Department> GetAll(int skip, int take);
-    public List<Department> GetAllByName(string name);
+    void Create(string name, int employeeLimit, int companyId);
+    void Delete(int departmentId);
+    void Update(int departmentId, string departmentName, int employeeLimit);
+    Department GetById(int departmentId);
+    List<Department> GetAll(int skip, int take);
+    List<Department> GetAllByName(string name);
+    void AddEmployee(Department department, Employee employee);
 
 }

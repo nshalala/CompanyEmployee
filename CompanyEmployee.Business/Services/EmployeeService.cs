@@ -115,4 +115,14 @@ public class EmployeeService : IEmployeeService
         Employee employee = new Employee(name, surname, salary);
         employeeRepository.Update(employeeId, employee);
     }
+
+    public Employee GetById(int employeeId)
+    {
+        var emp = employeeRepository.GetById(employeeId);
+        if (emp == null)
+        {
+            throw new NotFoundException("Employee not found.");
+        }
+        return emp;
+    }
 }

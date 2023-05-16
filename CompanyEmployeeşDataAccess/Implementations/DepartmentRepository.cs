@@ -43,4 +43,9 @@ public class DepartmentRepository : IRepository<Department>
     {
         return DBContext.Departments.FindAll(dep => dep.Name.Equals(name));
     }
+
+    public void AddEmployee(Department department, Employee employee)
+    {
+        employee.DepartmentId = department.DepartmentId;
+    }
 }

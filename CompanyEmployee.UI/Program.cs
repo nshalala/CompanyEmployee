@@ -1,174 +1,5 @@
-﻿
-//using CompanyEmployee.Business.Services;
-
-//CompanyService companyService = new CompanyService();
-//DepartmentService departmentService = new DepartmentService();
-//EmployeeService employeeService = new EmployeeService();
-//string name;
-//int id;
-//int skip;
-//int take;
-//int limit;
-//var list; 
-
-//Console.WriteLine("This is company - department - employee relations managament system. \nWhat action would you like to take?");
-
-//MainMenu:
-
-//Console.WriteLine("1. Company operations"
-//              + "\n2. Department operations"
-//              + "\n3. Employee operations"
-//              + "\n4. Exit");
-//int step1;
-//bool check = int.TryParse(Console.ReadLine(), out step1);
-//if (!check)
-//{
-//    throw new FormatException("Please enter a number.");
-//}
-
-//while (true)
-//{
-//    switch (step1)
-//    {
-//        case 4:
-//            System.Environment.Exit(0);
-//            break;
-//        case 1:
-//            #region CompanyMenu
-//            Console.WriteLine("1. Create a company"
-//                          + "\n2. Delete a company"
-//                          + "\n3. Update a company info"
-//                          + "\n4. Get a list of all departments of a company"
-//                          + "\n5. Get a list of all companies"
-//                          + "\n6. Return to main menu");
-//            int compMenu;
-//            bool compMenuCheck = int.TryParse(Console.ReadLine(), out compMenu);
-//            if (!compMenuCheck)
-//            {
-//                throw new FormatException("Please enter a number.");
-//            }
-//            switch (compMenu)
-//            {
-//                case 1:
-//                    //Create a company
-//                    Console.Write("Enter the name of company that you want to create:  ");
-//                    name = Console.ReadLine();
-//                    companyService.Create(name);
-//                    break;
-//                case 2:
-//                    //Delete a company
-//                    Console.Write("Which company would you like to delete?  ");
-//                    name = Console.ReadLine();
-//                    companyService.Delete(name);
-//                    break;
-//                case 3:
-//                    //Update a company
-//                    Console.Write("Enter the company's id:  ");
-//                    id = int.Parse(Console.ReadLine());
-//                    Console.Write("Enter new name for the company:  ");
-//                    name = Console.ReadLine();
-//                    companyService.Update(id, name);
-//                    break;
-//                case 4:
-//                    //Get all departments
-//                    Console.Write("Enter the company's id:  ");
-//                    id = int.Parse(Console.ReadLine());
-//                    companyService.GetAllDepartments(id);
-//                    break;
-//                case 5:
-//                    //Get all companies
-//                    Console.Write("Enter corresponding values:\nGet:  ");
-//                    skip = int.Parse(Console.ReadLine());
-//                    Console.Write("Take:  ");
-//                    take = int.Parse(Console.ReadLine());
-//                    list = companyService.GetAll(skip, take);
-//                    foreach (var item in list)
-//                    {
-//                        Console.WriteLine(item.Name);
-//                    }
-//                    break;
-//                case 6:
-//                    goto MainMenu;
-//                default:
-//                    Console.WriteLine("Such option doesn't exist. Choose another one:");
-//                    break;
-//            }
-//            #endregion
-//            break;
-//        case 2:
-//            #region DepartmentMenu
-//            Console.WriteLine("1. Create a department"
-//                          + "\n2. Delete a department"
-//                          + "\n3. Update a department"
-//                          + "\n4. Get a list of all departments"
-//                          + "\n5. Get a list of all departments by name"
-//                          + "\n6. Go to main menu");
-//            int depMenu;
-//            bool depMenuCheck = int.TryParse(Console.ReadLine(), out depMenu);
-//            if (!depMenuCheck)
-//            {
-//                throw new FormatException("Please enter a number.");
-//            }
-//            switch (depMenu)
-//            {
-//                case 1:
-//                    //Create a company
-//                    Console.Write("Enter the name of department that you want to create:  ");
-//                    name = Console.ReadLine();
-//                    Console.Write("Enter employee limit for the department:  ");
-//                    limit = int.Parse(Console.ReadLine());
-//                    Console.Write("Enter company id:  ");
-//                    id = int.Parse(Console.ReadLine());
-
-//                    departmentService.Create(name,limit,id);
-//                    break;
-//                case 2:
-//                    //Delete a company
-//                    Console.Write("Enter department id:  ");
-//                    id = int.Parse(Console.ReadLine());
-//                    departmentService.Delete(id);
-//                    break;
-//                case 3:
-//                    //Update a company
-//                    Console.Write("Enter the department's id:  ");
-//                    id = int.Parse(Console.ReadLine());
-//                    Console.Write("Enter a name for the department:  ");
-//                    name = Console.ReadLine();
-//                    Console.Write("Enter employee limit for the department:  ");
-//                    limit = int.Parse(Console.ReadLine());
-//                    departmentService.Update(id, name, limit);
-//                    break;
-//                case 4:
-//                    //Get all departments
-//                    Console.Write("Enter corresponding values:\nStart from:  ");
-//                    skip = int.Parse(Console.ReadLine());
-//                    Console.Write("Take:  ");
-//                    take = int.Parse(Console.ReadLine());
-//                    list = departmentService.GetAll(skip, take);
-//                    foreach (var item in list)
-//                    {
-//                        Console.WriteLine(item.Name);
-//                    }
-//                    break;
-//                case 5:
-//                    //Get all companies
-//                    Console.Write("Enter department name:  ");
-//                    name = Console.ReadLine();
-//                    departmentService.GetAllByName(name);
-//                    break;
-//                case 6:
-//                    goto MainMenu;
-//                default:
-//                    Console.WriteLine("Such option doesn't exist. Choose another one:");
-//                    break;
-//            }
-//            #endregion
-//            break;
-//    }
-//}
-
-
-using CompanyEmployee.Business.Services;
+﻿using CompanyEmployee.Business.Services;
+using CompanyEmployee.Core.Entities;
 
 CompanyService companyService = new CompanyService();
 DepartmentService departmentService = new DepartmentService();
@@ -177,7 +8,7 @@ EmployeeService employeeService = new EmployeeService();
 Console.WriteLine("This is a company-department-employee relations management system.\nWhat action would you like to take?");
 
 while (true)
-{
+{ 
     Console.WriteLine("\n1. Company operations"
                     + "\n2. Department operations"
                     + "\n3. Employee operations"
@@ -282,7 +113,8 @@ void DepartmentMenu()
                     + "\n3. Update department info"
                     + "\n4. Get a list of departments by name"
                     + "\n5. Get a list of departments"
-                    + "\n6. Return to the main menu");
+                    + "\n6. Add a new employee"
+                    + "\n7. Return to the main menu");
     int choice;
     bool check = int.TryParse(Console.ReadLine(), out choice);
     if (!check)
@@ -291,6 +123,7 @@ void DepartmentMenu()
     }
     string name;
     int depId;
+    int empId;
     int compId;
     int limit;
     switch (choice)
@@ -343,6 +176,15 @@ void DepartmentMenu()
             }
             break;
         case 6:
+            Console.Write("Enter department id: ");
+            depId = int.Parse(Console.ReadLine());
+            Console.Write("Enter employee id: ");
+            empId = int.Parse(Console.ReadLine());
+            var dep = departmentService.GetById(depId);
+            var emp = employeeService.GetById(empId);
+            departmentService.AddEmployee(dep, emp);
+            break;
+        case 7:
             return;
         default:
             Console.WriteLine("Such option doesn't exist. Choose another one:");

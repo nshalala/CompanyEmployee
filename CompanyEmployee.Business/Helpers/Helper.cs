@@ -11,6 +11,7 @@ public class Helper
     public static Dictionary<string, string> Exceptions { get; set; } = new Dictionary<string, string>()
     {
         {"AlreadyExistsException","This object already exists." },
+        {"CapacityLimitException","Capacity is already full." },
         {"InvalidWordException","Entered word is not valid. Use only letters." },
         {"NotEmptyException","Object should be empty to perform the operation." },
         {"TooLowException","Entered value is too low." },

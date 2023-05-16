@@ -9,11 +9,13 @@ namespace CompanyEmployee.Business.Services;
 
 public class DepartmentService : IDepartmentService
 {
+    public EmployeeRepository employeeRepository { get; }
     public DepartmentRepository departmentRepository { get; }
     public CompanyRepository companyRepository { get; }
 
     public DepartmentService()
     {
+        employeeRepository = new EmployeeRepository();
         departmentRepository = new DepartmentRepository();
         companyRepository = new CompanyRepository();
     }
@@ -74,6 +76,7 @@ public class DepartmentService : IDepartmentService
         Department department = new Department(name, empLimit, depCheck.CompanyId);
         departmentRepository.Update(depId, department);
     }
+    
 
     public List<Department> GetAll(int skip, int take)
     {
@@ -92,5 +95,30 @@ public class DepartmentService : IDepartmentService
             throw new SizeException(Helper.Exceptions["SizeException"]);
         }
         return departmentRepository.GetAllByName(name);
+    }
+
+    public void AddEmployee(Department department, Employee employee)
+    {
+        int count = departmentRepository.GetAllEmployees(department.DepartmentId).Count;
+        if(count == department.EmployeeLimit)
+        {
+            throw new CapacityLimitException(Helper.Exceptions["CapacityLimitException"]);
+        }
+        var emp = employeeRepository.GetById(employee.EmployeeId);
+        if (emp == null)
+        {
+            throw new NotFoundException("Employee not found.");
+        }
+        departmentRepository.AddEmployee(department, employee);
+    }
+
+    public Department GetById(int departmentId)
+    {
+        var dep = departmentRepository.GetById(departmentId);
+        if(dep == null)
+        {
+            throw new NotFoundException("Department not found.");
+        }
+        return dep;
     }
 }

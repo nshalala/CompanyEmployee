@@ -14,8 +14,4 @@ public class Company : IEntity
         _id++;
     }
 
-    public void AddDepartment(Department department)
-    {
-        department.CompanyId = CompanyId;
-    }
 }
